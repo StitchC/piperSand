@@ -6,7 +6,6 @@ import vTooltip from 'v-tooltip';
 
 import '../../common/css/cssreset.css';
 import '../../common/css/cusIcon.css';
-// import '../../common/css/flat-ui.css';
 
 Vue.use(vTooltip);
 Vue.config.productionTip = false;
