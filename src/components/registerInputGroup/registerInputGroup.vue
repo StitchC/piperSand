@@ -7,7 +7,7 @@
       </transition>
     </div>
     <div class="input-out-frame">
-      <input v-model="registerUsername" @focus="onFocus($event, regUsernameStatus)" type="text" placeholder="用户名 6-8位数字或英 中文字符">
+      <input v-model="registerUsername" @focus="onFocus($event, regUsernameStatus)" type="text" placeholder="用户名 1-15位数字或英 中文字符">
       <transition name="hint-slide">
         <div class="hint reg-username-hint" v-show="regUsernameStatus.show">{{regUsernameStatus.txt}}</div>
       </transition>
@@ -25,7 +25,7 @@
 <script type="text/ecmascript-6">
   const ACCOUNT_REG = /^[\w\d]+@[\w\d]+\.[\w]+$/;
   const PWD_REG = /^.{8,16}$/;
-  const USERNAME_REG = /^[\w\d\u4E00-\u9FA5\u9FA6-\u9FCB\u3400-\u4DB5\u20000-\u2A6D\u62A700-\u2B734\u2B740-\u2B81D]{1,8}$/u;
+  const USERNAME_REG = /^[\w\d\u4E00-\u9FA5\u9FA6-\u9FCB\u3400-\u4DB5\u20000-\u2A6D\u62A700-\u2B734\u2B740-\u2B81D]{1,15}$/u;
 
   export default {
     data() {
