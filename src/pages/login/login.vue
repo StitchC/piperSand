@@ -16,13 +16,11 @@
         </transition>
       </div>
     </div>
-    <forgot-pwd-dialog :show="forgotPwdDialogShow" :account="curAccount"  @dialog-close="toggleDialog"></forgot-pwd-dialog>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import particlesConfig from './assets/js/particles.config';
-  import forgotPwdDialog from 'components/forgotPwdDialog/forgotPwdDialog.vue';
   import loginInputGroup from 'components/loginInputGroup/loginInputGroup.vue';
   import registerInputGroup from 'components/registerInputGroup/registerInputGroup.vue';
 
@@ -41,7 +39,6 @@
       this.particlesConfig = particlesConfig;
     },
     components: {
-      'forgot-pwd-dialog': forgotPwdDialog,
       'login-input-group': loginInputGroup,
       'register-input-group': registerInputGroup
     },
