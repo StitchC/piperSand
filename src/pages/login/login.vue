@@ -60,7 +60,6 @@
       showFotgotPwdDialog(curAccount) {
         this.forgotPwdDialogShow = !this.forgotPwdDialogShow;
         this.curAccount = curAccount;
-        console.log(curAccount);
       }
     }
   };
