@@ -11,6 +11,7 @@
         <div class="switch-btn register-btn" :class="{'focus': inputStatus === 1}" @click="inputSwitchClick($event, 1)">注册</div>
       </div>
       <div class="input-content-wrapper">
+<<<<<<< HEAD
         <transition-group name="input-content-slide" model="out-in" tag="div">
           <div class="login-input-content" v-show="inputStatus === 0" :key="0">
             <input type="text" placeholder="请输入账号">
@@ -27,25 +28,71 @@
         </transition-group>
       </div>
     </div>
+=======
+        <transition name="input-group-slide" mode="out-in">
+          <component :is="curInputGroup" @forgot-pwd="showFotgotPwdDialog"></component>
+        </transition>
+      </div>
+    </div>
+    <forgot-pwd-dialog :show="forgotPwdDialogShow" :account="curAccount"  @dialog-close="toggleDialog"></forgot-pwd-dialog>
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import particlesConfig from './assets/js/particles.config';
+<<<<<<< HEAD
+=======
+  import forgotPwdDialog from 'components/forgotPwdDialog/forgotPwdDialog.vue';
+  import loginInputGroup from 'components/loginInputGroup/loginInputGroup.vue';
+  import registerInputGroup from 'components/registerInputGroup/registerInputGroup.vue';
+
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
   export default {
     name: 'login',
     data() {
       return {
         particlesConfig: {},
+<<<<<<< HEAD
         inputStatus: 0
+=======
+        inputStatus: 0,
+        forgotPwdDialogShow: false,
+        curAccount: '',
+        curInputGroup: 'login-input-group'
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
       };
     },
     created() {
       this.particlesConfig = particlesConfig;
     },
+<<<<<<< HEAD
     methods: {
       inputSwitchClick(event, index) {
         this.inputStatus = index;
+=======
+    components: {
+      'forgot-pwd-dialog': forgotPwdDialog,
+      'login-input-group': loginInputGroup,
+      'register-input-group': registerInputGroup
+    },
+    methods: {
+      inputSwitchClick(event, index) {
+        this.inputStatus = index;
+        if (index === 0) {
+          this.curInputGroup = 'login-input-group';
+        }else {
+          this.curInputGroup = 'register-input-group';
+        }
+      },
+      toggleDialog() {
+        this.forgotPwdDialogShow = !this.forgotPwdDialogShow;
+      },
+      showFotgotPwdDialog(curAccount) {
+        this.forgotPwdDialogShow = !this.forgotPwdDialogShow;
+        this.curAccount = curAccount;
+        console.log(curAccount);
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
       }
     }
   };
@@ -106,6 +153,7 @@
           &.focus
             background-color: rgba(255,255,255,0.8)
             color: #2ecc71
+<<<<<<< HEAD
       .login-input-content
         position: absolute
         top: 50px
@@ -199,4 +247,19 @@
           text-align: center
           &:hover
             background-color: #2ab361
+=======
+      .input-group-slide-enter
+        opacity: 0
+        transform: translate3d(-10%,0,0)
+      .input-group-slide-enter-active
+        transition: all .3s ease
+      .input-group-slide-enter-to
+        opacity: 1
+        transform: translate3d(0,0,0)
+      .input-group-slide-leave-to
+        opacity: 0
+        transform: translate3d(10%,0,0)
+      .input-group-slide-leave-active
+        transition: all .3s ease
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
 </style>

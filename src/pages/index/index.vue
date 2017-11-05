@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <div class="side-bar">
       <p class="title">资金</p>
       <h3 class="total-cash">￥10000000</h3>
@@ -39,15 +40,25 @@
       </div>
     </div>
     <factory :show="factoryModalShowStatus" @close="factoryModalClose"></factory>
+=======
+    <v-header></v-header>
+    <side-bar></side-bar>
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+<<<<<<< HEAD
   import factory from 'components/factory/factory.vue';
+=======
+  import header from 'components/header/header.vue';
+  import sideBar from 'components/sideBar/sideBar.vue';
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
 
   export default {
     data() {
       return {
+<<<<<<< HEAD
         factoryModalShowStatus: false,
         alertDialogShowStatus: false
       };
@@ -62,6 +73,17 @@
       factoryModalShow() {
         this.factoryModalShowStatus = true;
       }
+=======
+
+      };
+    },
+    components: {
+      'v-header': header,
+      'side-bar': sideBar
+    },
+    methods: {
+
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
     }
   };
 </script>
@@ -70,6 +92,7 @@
   body
     padding-left: 280px
     background-color: #f9f9f9
+<<<<<<< HEAD
   .side-bar
     position: fixed
     top: 0
@@ -118,4 +141,6 @@
           &:hover
             background-color: #2ecc71
             border-bottom-color: #2ecc71
+=======
+>>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
 </style>
