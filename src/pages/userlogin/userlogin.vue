@@ -37,6 +37,10 @@
     },
     created() {
       this.particlesConfig = particlesConfig;
+      // 页面初始化时发送请求获取后台的 cookie
+      if (!document.cookie.indexOf('csrftoken')) {
+        this.$http.get('/get_token');
+      }
     },
     components: {
       'login-input-group': loginInputGroup,
