@@ -11,10 +11,14 @@
     </div>
     <div class="forgot-pwd" @click="forgotPwd">忘记密码？</div>
     <div class="login-btn" @click="onLogin">登陆</div>
+    <forgot-pwd-dialog :show="forgotPwdDialogShow" :account="loginAccount"  @dialog-close="toggleDialog"></forgot-pwd-dialog>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import forgotPwdDialog from 'components/forgotPwdDialog/forgotPwdDialog.vue';
+
+
   const ACCOUNT_REG = /^[\w\d]+@[\w\d]+\.[\w]+$/;
 
   export default {
@@ -25,8 +29,12 @@
         loginAcStatus: {
           show: false,
           txt: ''
-        }
+        },
+        forgotPwdDialogShow: false
       };
+    },
+    components: {
+      'forgot-pwd-dialog': forgotPwdDialog
     },
     methods: {
       onFocus(event, option) {
@@ -40,7 +48,10 @@
         }
       },
       forgotPwd() {
-        this.$emit('forgot-pwd', this.loginAccount);
+        this.forgotPwdDialogShow = true;
+      },
+      toggleDialog() {
+        this.forgotPwdDialogShow = !this.forgotPwdDialogShow;
       }
     }
   };

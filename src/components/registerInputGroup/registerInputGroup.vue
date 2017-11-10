@@ -23,9 +23,12 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {getCookie} from 'common/js/cookie.js';
+
   const ACCOUNT_REG = /^[\w\d]+@[\w\d]+\.[\w]+$/;
   const PWD_REG = /^.{8,16}$/;
   const USERNAME_REG = /^[\w\d\u4E00-\u9FA5\u9FA6-\u9FCB\u3400-\u4DB5\u20000-\u2A6D\u62A700-\u2B734\u2B740-\u2B81D]{1,15}$/u;
+
 
   export default {
     data() {
@@ -69,6 +72,23 @@
           this.regPwdStatus.show = true;
           this.regPwdStatus.txt = '请填写正确的用户密码';
           this.registerPwd = '';
+        }
+
+        // 如果用户输入项全部正确 发送请求给后台注册
+        if (ACCOUNT_REG.test(this.registerAccount) &&
+          USERNAME_REG.test(this.registerUsername) && PWD_REG.test(this.registerPwd)) {
+          this.$http.post('/register', {
+            username: this.registerUsername,
+            password: this.registerPwd,
+            email: this.registerAccount
+          }, {
+            emulateJSON: true,
+            headers: {
+              'X-CSRFToken': getCookie('csrftoken')
+            }
+          }).then((res) => {
+            console.log(res);
+          });
         }
       }
     }
