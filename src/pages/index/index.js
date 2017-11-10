@@ -5,7 +5,7 @@ import index from './index.vue';
 import vTooltip from 'v-tooltip';
 
 import '../../common/css/cssreset.css';
-import '../../common/css/cusIcon.css';
+import '../../common/css/cusIcon.styl';
 
 Vue.use(vTooltip);
 Vue.config.productionTip = false;

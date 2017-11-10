@@ -48,13 +48,10 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/css/mixin.styl"
+
   .factory-modal-wrapper
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-color: rgba(0,0,0,0.6)
+    modal-style()
     &.factory-modal-fade-enter
       opacity: 0
     &.factory-modal-fade-enter-active

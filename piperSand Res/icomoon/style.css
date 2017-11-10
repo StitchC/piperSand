@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?fuswei');
+  src:  url('fonts/icomoon.eot?fuswei#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fuswei') format('truetype'),
+    url('fonts/icomoon.woff?fuswei') format('woff'),
+    url('fonts/icomoon.svg?fuswei#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-decrease:before {
+  content: "\e922";
+}
+.icon-plus:before {
+  content: "\e923";
+}
+.icon-international-market:before {
+  content: "\e91d";
+}
+.icon-asia-market:before {
+  content: "\e91e";
+}
+.icon-domestic-market:before {
+  content: "\e91f";
+}
+.icon-district-market:before {
+  content: "\e920";
+}
+.icon-local-market:before {
+  content: "\e921";
+}
+.icon-arrow-right:before {
+  content: "\e91c";
+}
+.icon-construct-beltline:before {
+  content: "\e91b";
+}
+.icon-advertisement:before {
+  content: "\e900";
+}
+.icon-beltline-trans:before {
+  content: "\e901";
+}
+.icon-new-beltline:before {
+  content: "\e902";
+}
+.icon-buy-factory:before {
+  content: "\e903";
+}
+.icon-delivered:before {
+  content: "\e904";
+}
+.icon-delivery:before {
+  content: "\e905";
+}
+.icon-discount-receiable:before {
+  content: "\e906";
+}
+.icon-emergency-buy:before {
+  content: "\e907";
+}
+.icon-exchange:before {
+  content: "\e908";
+}
+.icon-factory:before {
+  content: "\e909";
+}
+.icon-getPermission:before {
+  content: "\e90a";
+}
+.icon-iso-dev:before {
+  content: "\e90b";
+}
+.icon-logistics:before {
+  content: "\e90c";
+}
+.icon-long-loan:before {
+  content: "\e90d";
+}
+.icon-market-dev:before {
+  content: "\e90e";
+}
+.icon-next-round-produce:before {
+  content: "\e90f";
+}
+.icon-order:before {
+  content: "\e910";
+}
+.icon-place-an-order:before {
+  content: "\e911";
+}
+.icon-produce:before {
+  content: "\e912";
+}
+.icon-product-dev:before {
+  content: "\e913";
+}
+.icon-qualifications:before {
+  content: "\e914";
+}
+.icon-sell:before {
+  content: "\e915";
+}
+.icon-sell-beltline:before {
+  content: "\e916";
+}
+.icon-sell-stock:before {
+  content: "\e917";
+}
+.icon-sheet:before {
+  content: "\e918";
+}
+.icon-short-loan:before {
+  content: "\e919";
+}
+.icon-warehouse:before {
+  content: "\e91a";
+}
