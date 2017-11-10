@@ -1,12 +1,5 @@
 <template>
   <transition name="forgotPwd-dialog-fade">
-<<<<<<< HEAD
-    <div class="forgotPwd-dialog-wrapper">
-      <div class="forgotPwd-dialog-content">
-        <h3 class="dialog-title">找回密码</h3>
-        <p class="dialog-hint">你的登陆密码会发送到你的填写的邮箱地址</p>
-        <input type="text" placeholder="请填写正确的邮箱地址">
-=======
     <div class="forgotPwd-dialog-wrapper" v-show="show">
       <div class="forgotPwd-dialog-content">
         <span class="close-btn" @click="closeDialog">✖</span>
@@ -19,16 +12,12 @@
           </transition>
         </div>
         <div class="submit-btn" @click="getPwd">获取密码</div>
->>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
       </div>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
-<<<<<<< HEAD
-  export default {};
-=======
   /**
    * 找回密码提示框组件：
    * @param {Boolean} show - 控制组件的显示或隐藏
@@ -80,7 +69,6 @@
       }
     }
   };
->>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -91,8 +79,6 @@
     width: 100%
     height: 100%
     background-color: rgba(0,0,0,0.6)
-<<<<<<< HEAD
-=======
     z-index: 50
     &.forgotPwd-dialog-fade-enter
       opacity: 0
@@ -183,5 +169,4 @@
         cursor: pointer
         &:hover
           background-color: #2ab361
->>>>>>> cd8b36b440cb3aacb500075e2934b882fabaa77e
 </style>
