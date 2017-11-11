@@ -18,7 +18,7 @@
           <div class="operate-name">年期</div>
           <div class="operate-main">
             <span class="decrease-btn icon-decrease" @click="decYear"></span>
-            <input class="loan-show-board" type="text" v-model="year">
+            <p class="loan-year-show">{{year}}</p>
             <span class="plus-btn icon-plus" @click="plusYear"></span>
           </div>
         </div>
@@ -66,7 +66,7 @@
         this.sum = parseInt(this.sum) - 500;
       },
       decYear() {
-        if(this.year <= 1) {
+        if(this.year === 1) {
           return;
         }
         this.year = parseInt(this.year) - 1;
@@ -96,18 +96,15 @@
         }
       },
       sum(val) {
-        if(val === '') {
+        if(val === '' || val < 0) {
           this.sum = 0;
-          return;
+        }else {
+          this.sum = parseInt(val);
         }
-         this.sum = (val + '').replace(/\D/g, '');
-      },
-      year(val) {
-        if(val === '') {
-          this.year = 1;
-          return;
+
+        if(/\D/g.test(val)) {
+          this.sum = (val + '').replace(/\D/g, '');
         }
-        this.year = (val + '').replace(/\D/g, '');
       }
     }
   };
@@ -173,6 +170,13 @@
             text-align: center
             &:focus
               outline: none
+          .loan-year-show
+            display: inline-block
+            vertical-align: middle
+            width: 180px
+            height: 30px
+            line-height: 30px
+            text-align: center
       .confirm-loan-btn
         confirm-btn-enable()
 </style>

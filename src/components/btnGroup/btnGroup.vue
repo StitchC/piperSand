@@ -6,21 +6,21 @@
           <span class="item-icon icon-advertisement"></span>
           <p class="item-title">广告投放</p>
         </div>
-        <div class="btn-item" @click="loanModaShow($event, 1)">
+        <div class="btn-item" @click="showLoanModa($event, 1)">
           <span class="item-icon icon-long-loan"></span>
           <p class="item-title">长期贷款</p>
         </div>
-        <div class="btn-item" @click="loanModaShow($event, 0)">
+        <div class="btn-item" @click="showLoanModa($event, 0)">
           <span class="item-icon icon-short-loan"></span>
           <p class="item-title">短期贷款</p>
         </div>
-        <div class="btn-item" @click="ordrRawShow">
+        <div class="btn-item" @click="showOrderRaw">
           <span class="item-icon icon-place-an-order"></span>
           <p class="item-title">下原料订单</p>
         </div>
       </div>
       <div class="btn-row">
-        <div class="btn-item">
+        <div class="btn-item" @click="showEmergencyBuy">
           <span class="item-icon icon-emergency-buy"></span>
           <p class="item-title">紧急采购</p>
         </div>
@@ -40,39 +40,49 @@
     </div>
     <loan-modal :loan-type="loanType" :show="loanModalShow" @loan-modal-close="loanModalClose"></loan-modal>
     <order-raw-modal :show="orderRawShow" @order-raw-modal-close="orderRawClose"></order-raw-modal>
+    <emergency-buy-modal :show="emergencyBuyShow" @emergency-buy-modal-close="emergencyBuyClose"></emergency-buy-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import loanModal from 'components/loanModal/loanModal.vue';
   import orderRawModal from 'components/orderRawModal/orderRawModal.vue';
+  import emergencyBuyModal from 'components/emergencyBuyModal/emergencyBuyModal.vue';
 
   export default {
     data() {
       return {
         loanType: -1,
         loanModalShow: false,
-        orderRawShow: false
+        orderRawShow: false,
+        emergencyBuyShow: false
       };
     },
     methods: {
-      loanModaShow(event, type) {
+      showLoanModa(event, type) {
         this.loanType = type;
         this.loanModalShow = true;
       },
       loanModalClose() {
         this.loanModalShow = !this.loanModalShow;
       },
-      ordrRawShow() {
+      showOrderRaw() {
         this.orderRawShow = !this.orderRawShow;
       },
       orderRawClose() {
         this.orderRawShow = false;
+      },
+      showEmergencyBuy() {
+        this.emergencyBuyShow = !this.emergencyBuyShow;
+      },
+      emergencyBuyClose() {
+        this.emergencyBuyShow = false;
       }
     },
     components: {
       'loan-modal': loanModal,
-      'order-raw-modal': orderRawModal
+      'order-raw-modal': orderRawModal,
+      'emergency-buy-modal': emergencyBuyModal
     }
   };
 </script>

@@ -69,7 +69,14 @@
       }
     },
     methods: {
+      initOrder() {
+        this.r1 = 0;
+        this.r2 = 0;
+        this.r3 = 0;
+        this.r4 = 0;
+      },
       closeModal() {
+        this.initOrder();
         this.$emit('order-raw-modal-close');
       }
     },
@@ -77,35 +84,54 @@
       r1(val) {
         if(val === '' || val < 0) {
           this.r1 = 0;
-          return;
+        }else {
+          this.r1 = parseInt(val);
         }
-        this.r1 = (val + '').replace(/\D/g, '');
+
+       if(/\D/g.test(val + '')) {
+         this.r1 = (val + '').replace(/\D/g, '');
+       }
       },
       r2(val) {
         if(val === '' || val < 0) {
           this.r2 = 0;
-          return;
+        }else {
+          this.r2 = parseInt(val);
         }
-        this.r2 = (val + '').replace(/\D/g, '');
+
+        if(/\D/g.test(val + '')) {
+          this.r2 = (val + '').replace(/\D/g, '');
+        }
       },
       r3(val) {
         if(val === '' || val < 0) {
           this.r3 = 0;
-          return;
+        }else {
+          this.r3 = parseInt(val);
         }
-        this.r3 = (val + '').replace(/\D/g, '');
+
+        if(/\D/g.test(val + '')) {
+          this.r3 = (val + '').replace(/\D/g, '');
+        }
       },
       r4(val) {
         if(val === '' || val < 0) {
           this.r4 = 0;
-          return;
+        }else {
+          this.r4 = parseInt(val);
         }
-        this.r4 = (val + '').replace(/\D/g, '');
+
+        if(/\D/g.test(val + '')) {
+          this.r4 = (val + '').replace(/\D/g, '');
+        }
       }
     },
     computed: {
       totalvalid() {
-        let total = parseInt(this.r1) + parseInt(this.r2) + parseInt(this.r3) + parseInt(this.r4);
+        let total = 0;
+        for(let i = 1; i < 5; i++) {
+          total += parseInt(this['r' + 1]);
+        }
         return total > 0;
       }
     }
