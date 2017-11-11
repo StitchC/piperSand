@@ -6,15 +6,15 @@
           <span class="item-icon icon-advertisement"></span>
           <p class="item-title">广告投放</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="loanModaShow($event, 1)">
           <span class="item-icon icon-long-loan"></span>
           <p class="item-title">长期贷款</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="loanModaShow($event, 0)">
           <span class="item-icon icon-short-loan"></span>
           <p class="item-title">短期贷款</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="ordrRawShow">
           <span class="item-icon icon-place-an-order"></span>
           <p class="item-title">下原料订单</p>
         </div>
@@ -38,15 +38,41 @@
         </div>
       </div>
     </div>
-    <loan-modal></loan-modal>
+    <loan-modal :loan-type="loanType" :show="loanModalShow" @loan-modal-close="loanModalClose"></loan-modal>
+    <order-raw-modal :show="orderRawShow" @order-raw-modal-close="orderRawClose"></order-raw-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import loanModal from 'components/loanModal/loanModal.vue';
+  import orderRawModal from 'components/orderRawModal/orderRawModal.vue';
+
   export default {
+    data() {
+      return {
+        loanType: -1,
+        loanModalShow: false,
+        orderRawShow: false
+      };
+    },
+    methods: {
+      loanModaShow(event, type) {
+        this.loanType = type;
+        this.loanModalShow = true;
+      },
+      loanModalClose() {
+        this.loanModalShow = !this.loanModalShow;
+      },
+      ordrRawShow() {
+        this.orderRawShow = !this.orderRawShow;
+      },
+      orderRawClose() {
+        this.orderRawShow = false;
+      }
+    },
     components: {
-      'loan-modal': loanModal
+      'loan-modal': loanModal,
+      'order-raw-modal': orderRawModal
     }
   };
 </script>

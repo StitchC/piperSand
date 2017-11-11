@@ -50,6 +50,8 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/css/mixin.styl"
+
   .confirm-dialog-wrapper
     position: fixed
     top: 0
@@ -58,16 +60,7 @@
     height: 100%
     background-color: rgba(0,0,0,0.5)
     z-index: 99
-    &.confirm-dialog-fade-enter
-      opacity: 0
-    &.confirm-dialog-fade-enter-active
-      transition: all .4s ease
-    &.confirm-dialog-fade-enter-to
-      opacity: 1
-    &.confirm-dialog-fade-leave-to
-      opacity: 0
-    &.confirm-dialog-fade-leave-active
-      transition: all .4s ease
+    fade-animate('confirm-dialog-fade',0,1)
     .dialog-content
       position: absolute
       top: 50%
@@ -88,7 +81,7 @@
         width: 100%
         height: 40px
         line-height: 40px
-        padding: 0 12px
+        text-align: center
         .btn
           display: inline-block
           width: 60px

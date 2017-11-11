@@ -56,6 +56,8 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/css/mixin.styl"
+
   .alert-dialog-wrapper
     position: fixed
     bottom: 120px
@@ -67,16 +69,7 @@
     box-shadow: 0 0 15px rgba(0,0,0,0.4)
     text-align: center
     z-index: 99
-    &.alert-dialog-fade-enter
-      opacity: 0
-    &.alert-dialog-fade-enter-active
-      transition: all .4s ease
-    &.alert-dialog-fade-enter-to
-      opacity: 1
-    &.alert-dialog-fade-leave-to
-      opacity: 0
-    &.alert-dialog-fade-leave-active
-      transition: all .4s ease
+    fade-animate('alert-dialog-fade',0,1)
     .alert-dialog-content
       color: #fff
 </style>

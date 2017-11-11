@@ -1,7 +1,7 @@
 <template>
   <transition name="factory-modal-fade">
     <div class="factory-modal-wrapper" v-show="show">
-      <span class="close-btn icon-close" @click="close"></span>
+      <span class="close-btn icon-close" @click="close">✖</span>
       <div class="lot-wrapper">
         <ul class="factory-intro">
           <li class="intro-item small-factory"><i class="icon icon-factory"></i>小型工厂</li>
@@ -52,16 +52,7 @@
 
   .factory-modal-wrapper
     modal-style()
-    &.factory-modal-fade-enter
-      opacity: 0
-    &.factory-modal-fade-enter-active
-      transition: all .4s ease
-    &.factory-modal-fade-enter-to
-      opacity: 1
-    &.factory-modal-fade-leave-to
-      opacity: 0
-    &.factory-modal-fade-leave-active
-      transition: all .4s ease
+    fade-animate('factory-modal-fade',0,1)
     .close-btn
       position: absolute
       top: 20px
