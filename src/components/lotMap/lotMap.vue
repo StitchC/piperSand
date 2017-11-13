@@ -8,15 +8,18 @@
           <li class="intro-item middle-factory"><i class="icon icon-factory"></i>中型工厂</li>
           <li class="intro-item large-factory"><i class="icon icon-factory"></i>大型工厂</li>
         </ul>
-        <div class="lot-item" :data-id="item" v-for="item in lots" v-tooltip="{content: '点击地块购置工厂', classes: 'tooltip-style'}">
+        <div class="lot-item" :data-id="item" v-for="(item, index) in lots" v-tooltip="{content: '点击地块购置工厂', classes: 'tooltip-style'}" @click="showBuyFactory($event, index + 1)">
           <span class="lot-title">地块{{item}}</span>
         </div>
       </div>
+      <buy-factory-modal :show="buyFactoryShow" :lot-index="curLotIndex" @buy-factory-modal-close="closeBuyFactoryModal"></buy-factory-modal>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
+  import buyFactoryModal from 'components/buyFactoryModal/buyFactoryModal.vue';
+
   /**
    * 工厂选项模态框
    * 参数:
@@ -31,7 +34,9 @@
   export default {
     data() {
       return {
-        lots: [1, 2, 3, 4, 5]
+        lots: [1, 2, 3, 4, 5],
+        buyFactoryShow: false,
+        curLotIndex: -1
       };
     },
     props: {
@@ -39,9 +44,19 @@
         type: Boolean
       }
     },
+    components: {
+      'buy-factory-modal': buyFactoryModal
+    },
     methods: {
       close() {
         this.$emit('close');
+      },
+      showBuyFactory(event, index) {
+        this.curLotIndex = index;
+        this.buyFactoryShow = true;
+      },
+      closeBuyFactoryModal() {
+        this.buyFactoryShow = false;
       }
     }
   };
@@ -55,7 +70,7 @@
     fade-animate('factory-modal-fade',0,1)
     .close-btn
       position: absolute
-      top: 20px
+      top: 25px
       right: 20px
       color: #fff
       font-size: 30px

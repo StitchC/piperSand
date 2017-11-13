@@ -1,5 +1,6 @@
 ###这里里面的所有API都是login require的
 #### 绿色表示已经找到图标
+✖
 
 #### <font color=green>广告投放</font>
 
@@ -114,7 +115,7 @@ return
 
 #### <font color=green>交货(侧边栏)</font> /game/delivery POST content_type="application/json"
 json keys
-- order_id: 
+- order_id:
 
 return
 - {'code': 200, 'msg': '成功'}

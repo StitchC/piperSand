@@ -5,10 +5,10 @@
         <div class="emergency-buy-close-btn-wrapper">
           <span class="close-btn" @click="closeModal">✖</span>
         </div>
-        <h3 class="emergency-buy-title">紧急采购</h3>
+        <h3 class="emergency-buy-title">{{title}}</h3>
         <div class="emrgency-but-list-wrapper">
           <div class="buy-raw">
-            <h3 class="buy-raw-title">购买原材料</h3>
+            <h3 class="buy-raw-title">原材料列表</h3>
             <table class="buy-raw-list">
               <thead>
                 <tr>
@@ -37,7 +37,7 @@
             </table>
           </div>
           <div class="buy-product">
-            <h3 class="buy-product-title">购买产品</h3>
+            <h3 class="buy-product-title">产品列表</h3>
             <table class="buy-raw-list">
               <thead>
                 <tr>
@@ -65,7 +65,7 @@
               </tbody>
             </table>
           </div>
-          <div class="confirm-emergency-buy-btn" :class="{'disable': !valid, 'enable': valid}">紧急购入</div>
+          <div class="confirm-emergency-buy-btn" :class="{'disable': !valid, 'enable': valid}">{{confirmBtnTxt}}</div>
         </div>
       </div>
     </div>
@@ -78,6 +78,7 @@
    *
    *
    * @params {boolean} show - 控制组件显示或隐藏
+   * @params {String} type - 控制组件的类型 'buy' 表示紧急购入对话框 'sell' 表示出售库存对话框
    *
    * @event emergency-buy-modal-close - 触发父组件关闭模态框
    * */
@@ -85,6 +86,8 @@
   export default {
     data() {
       return {
+        title: '',
+        confirmBtnTxt: '',
         r1: 0,
         r2: 0,
         r3: 0,
@@ -98,6 +101,9 @@
     props: {
       show: {
         type: Boolean
+      },
+      type: {
+        type: String
       }
     },
     methods: {
@@ -109,10 +115,19 @@
       },
       closeModal() {
         this.init();
-        this.$emit('emergency-buy-modal-close');
+        this.$emit('buy-or-sell-modal-close');
       }
     },
     watch: {
+      type(val) {
+        if(val === 'buy') {
+          this.title = '紧急购买';
+          this.confirmBtnTxt = '确认购买';
+        }else {
+          this.title = '出售库存';
+          this.confirmBtnTxt = '确认出售';
+        }
+      },
       r1(val) {
         let result = val + '';
 
@@ -248,9 +263,6 @@
          for(let i = 1; i < 5; i++) {
            result += (parseInt(this['r' + i]) + parseInt(this['p' + i]));
          }
-         // console.log(this.r1)
-         console.log(typeof result);
-         console.log(result > 0);
          return result > 0;
       }
     }

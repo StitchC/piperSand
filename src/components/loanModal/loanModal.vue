@@ -96,15 +96,20 @@
         }
       },
       sum(val) {
-        if(val === '' || val < 0) {
-          this.sum = 0;
-        }else {
-          this.sum = parseInt(val);
+        let result = val + '';
+
+        // 如果改变的值中有非数字字符 替换掉
+        if(/\D/g.test(result)) {
+          result = result.replace(/\D/g, '');
         }
 
-        if(/\D/g.test(val)) {
-          this.sum = (val + '').replace(/\D/g, '');
+        // 如果改变的值为空 重设为0
+        if(result === '') {
+          result = 0;
         }
+
+        // 如果以上判断都不符合直接设置 sum
+        this.sum = parseInt(result);
       }
     }
   };

@@ -26,6 +26,5 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   body
-    padding: 100px 30px 0 280px
     background-color: #f9f9f9
 </style>

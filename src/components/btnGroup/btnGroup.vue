@@ -20,19 +20,19 @@
         </div>
       </div>
       <div class="btn-row">
-        <div class="btn-item" @click="showEmergencyBuy">
+        <div class="btn-item" @click="showBuyOrSellModal($event, 'buy')">
           <span class="item-icon icon-emergency-buy"></span>
           <p class="item-title">紧急采购</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="showProductDev">
           <span class="item-icon icon-product-dev"></span>
           <p class="item-title">产品研发</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="showMarketDev">
           <span class="item-icon icon-market-dev"></span>
           <p class="item-title">新市场开拓</p>
         </div>
-        <div class="btn-item">
+        <div class="btn-item" @click="showBuyOrSellModal($event, 'sell')">
           <span class="item-icon icon-sell-stock"></span>
           <p class="item-title">出售库存</p>
         </div>
@@ -40,14 +40,18 @@
     </div>
     <loan-modal :loan-type="loanType" :show="loanModalShow" @loan-modal-close="loanModalClose"></loan-modal>
     <order-raw-modal :show="orderRawShow" @order-raw-modal-close="orderRawClose"></order-raw-modal>
-    <emergency-buy-modal :show="emergencyBuyShow" @emergency-buy-modal-close="emergencyBuyClose"></emergency-buy-modal>
+    <emergency-buy-or-sell-stock-modal :show="buyOrSellShow" :type="buyOrSellModalType" @buy-or-sell-modal-close="buyOrSellClose"></emergency-buy-or-sell-stock-modal>
+    <product-dev-modal :show="productDevShow" @product-dev-modal-close="productDevClose"></product-dev-modal>
+    <market-dev-modal :show="marketDevShow" @market-dev-modal-close="marketDevClose"></market-dev-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import loanModal from 'components/loanModal/loanModal.vue';
   import orderRawModal from 'components/orderRawModal/orderRawModal.vue';
-  import emergencyBuyModal from 'components/emergencyBuyModal/emergencyBuyModal.vue';
+  import emergencyBuyOrSellStockModal from 'components/emergencyBuyOrSellStockModal/emergencyBuyOrSellStockModal.vue';
+  import productDevModal from 'components/productDevModal/productDevModal.vue';
+  import marketDevModal from 'components/marketDevModal/marketDevModal.vue';
 
   export default {
     data() {
@@ -55,7 +59,10 @@
         loanType: -1,
         loanModalShow: false,
         orderRawShow: false,
-        emergencyBuyShow: false
+        buyOrSellShow: false,
+        buyOrSellModalType: '',
+        productDevShow: false,
+        marketDevShow: false
       };
     },
     methods: {
@@ -72,22 +79,39 @@
       orderRawClose() {
         this.orderRawShow = false;
       },
-      showEmergencyBuy() {
-        this.emergencyBuyShow = !this.emergencyBuyShow;
+      showBuyOrSellModal(event, type) {
+        this.buyOrSellModalType = type;
+        this.buyOrSellShow = !this.buyOrSellShow;
       },
-      emergencyBuyClose() {
-        this.emergencyBuyShow = false;
+      buyOrSellClose() {
+        this.buyOrSellShow = false;
+      },
+      showProductDev() {
+        this.productDevShow = !this.productDevShow;
+      },
+      productDevClose() {
+        this.productDevShow = false;
+      },
+      showMarketDev() {
+        this.marketDevShow = true;
+      },
+      marketDevClose() {
+        this.marketDevShow = !this.marketDevShow;
       }
     },
     components: {
       'loan-modal': loanModal,
       'order-raw-modal': orderRawModal,
-      'emergency-buy-modal': emergencyBuyModal
+      'emergency-buy-or-sell-stock-modal': emergencyBuyOrSellStockModal,
+      'product-dev-modal': productDevModal,
+      'market-dev-modal': marketDevModal
     }
   };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  .btn-group-wrapper
+    margin: 100px 0 0 280px
   .btn-row
     margin-top: 30px
     text-align: center

@@ -29,7 +29,8 @@
     data() {
       return {
         particlesConfig: {},
-        inputStatus: 0
+        inputStatus: 0,
+        curInputGroup: 'login-input-group'
       };
     },
     created() {

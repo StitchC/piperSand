@@ -1,11 +1,9 @@
-import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from 'vue';
+import loginInputGroup from '@/components/loginInputGroup/loginInputGroup.vue';
 
-describe('HelloWorld.vue', () => {
+describe('loginInputGroup.vue', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(HelloWorld)
-    const vm = new Constructor().$mount()
-    expect(vm.$el.querySelector('.hello h1').textContent)
-      .to.equal('Welcome to Your Vue.js App')
-  })
-})
+    expect(typeof loginInputGroup.data).toBe('function')
+      .to.equal('Welcome to Your Vue.js App');
+  });
+});

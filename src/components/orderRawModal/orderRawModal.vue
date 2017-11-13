@@ -70,10 +70,9 @@
     },
     methods: {
       initOrder() {
-        this.r1 = 0;
-        this.r2 = 0;
-        this.r3 = 0;
-        this.r4 = 0;
+        for(let i = 1; i < 5; i++) {
+          this['r' + i] = 0;
+        }
       },
       closeModal() {
         this.initOrder();
@@ -82,48 +81,68 @@
     },
     watch: {
       r1(val) {
-        if(val === '' || val < 0) {
-          this.r1 = 0;
-        }else {
-          this.r1 = parseInt(val);
+        let result = val + '';
+
+        // 如果改变的值中有非数字字符 替换掉
+        if(/\D/g.test(result)) {
+          result = result.replace(/\D/g, '');
         }
 
-       if(/\D/g.test(val + '')) {
-         this.r1 = (val + '').replace(/\D/g, '');
-       }
+        // 如果改变的值为空 重设为0
+        if(result === '') {
+          result = 0;
+        }
+
+        // 如果以上判断都不符合直接设置 r1
+        this.r1 = parseInt(result);
       },
       r2(val) {
-        if(val === '' || val < 0) {
-          this.r2 = 0;
-        }else {
-          this.r2 = parseInt(val);
+        let result = val + '';
+
+        // 如果改变的值中有非数字字符 替换掉
+        if(/\D/g.test(result)) {
+          result = result.replace(/\D/g, '');
         }
 
-        if(/\D/g.test(val + '')) {
-          this.r2 = (val + '').replace(/\D/g, '');
+        // 如果改变的值为空 重设为0
+        if(result === '') {
+          result = 0;
         }
+
+        // 如果以上判断都不符合直接设置 r1
+        this.r2 = parseInt(result);
       },
       r3(val) {
-        if(val === '' || val < 0) {
-          this.r3 = 0;
-        }else {
-          this.r3 = parseInt(val);
+        let result = val + '';
+
+        // 如果改变的值中有非数字字符 替换掉
+        if(/\D/g.test(result)) {
+          result = result.replace(/\D/g, '');
         }
 
-        if(/\D/g.test(val + '')) {
-          this.r3 = (val + '').replace(/\D/g, '');
+        // 如果改变的值为空 重设为0
+        if(result === '') {
+          result = 0;
         }
+
+        // 如果以上判断都不符合直接设置 r1
+        this.r3 = parseInt(result);
       },
       r4(val) {
-        if(val === '' || val < 0) {
-          this.r4 = 0;
-        }else {
-          this.r4 = parseInt(val);
+        let result = val + '';
+
+        // 如果改变的值中有非数字字符 替换掉
+        if(/\D/g.test(result)) {
+          result = result.replace(/\D/g, '');
         }
 
-        if(/\D/g.test(val + '')) {
-          this.r4 = (val + '').replace(/\D/g, '');
+        // 如果改变的值为空 重设为0
+        if(result === '') {
+          result = 0;
         }
+
+        // 如果以上判断都不符合直接设置 r1
+        this.r4 = parseInt(result);
       }
     },
     computed: {
