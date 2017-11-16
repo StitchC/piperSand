@@ -10,11 +10,6 @@
           <i class="arrow icon-arrow-right"></i>
         </li>
         <li class="tool-list-item">
-          <i class="icon icon-construct-beltline"></i>
-          <span class="txt">在建生产线</span>
-          <i class="arrow icon-arrow-right"></i>
-        </li>
-        <li class="tool-list-item">
           <i class="icon icon-sheet"></i>
           <span class="txt">报表</span>
           <i class="arrow icon-arrow-right"></i>

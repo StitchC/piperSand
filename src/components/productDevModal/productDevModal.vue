@@ -37,7 +37,7 @@
             <input type="checkbox" v-model="p4">
           </div>
         </div>
-        <div class="confirm-dev-btn" :class="{'disable': hasSelected === false, 'enable': hasSelected === true}" @click="confirmDev">开始研发</div>
+        <div class="confirm-dev-btn enabled" @click="confirmDev">开始研发</div>
       </div>
     </div>
   </transition>
@@ -179,8 +179,8 @@
         text-align: center
         font-size: 14px
         transition: all .3s linear
-        &.disable
+        &.disabled
           confitm-btn-disable()
-        &.enable
+        &.enabled
           confirm-btn-enable()
 </style>

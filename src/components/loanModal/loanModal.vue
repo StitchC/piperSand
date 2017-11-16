@@ -14,7 +14,7 @@
             <span class="plus-btn icon-plus" @click="plusMoney"></span>
           </div>
         </div>
-        <div class="operate-wrap">
+        <div class="operate-wrap" v-show="loanType === 1">
           <div class="operate-name">年期</div>
           <div class="operate-main">
             <span class="decrease-btn icon-decrease" @click="decYear"></span>

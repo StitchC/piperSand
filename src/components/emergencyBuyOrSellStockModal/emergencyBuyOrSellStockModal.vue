@@ -65,7 +65,7 @@
               </tbody>
             </table>
           </div>
-          <div class="confirm-emergency-buy-btn" :class="{'disable': !valid, 'enable': valid}">{{confirmBtnTxt}}</div>
+          <div class="confirm-emergency-buy-btn enable">{{confirmBtnTxt}}</div>
         </div>
       </div>
     </div>
@@ -257,15 +257,7 @@
         this.p4 = parseInt(result);
       }
     },
-    computed: {
-      valid() {
-         let result = 0;
-         for(let i = 1; i < 5; i++) {
-           result += (parseInt(this['r' + i]) + parseInt(this['p' + i]));
-         }
-         return result > 0;
-      }
-    }
+    computed: {}
   };
 </script>
 

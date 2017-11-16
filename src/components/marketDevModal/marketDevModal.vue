@@ -36,7 +36,7 @@
                 <p class="intro-txt">你将会在国际开拓更大的市场</p>
               </div>
             </transition-group>
-            <div class="confirm-dev-market-btn" :class="{'disabled': hasSelected === false, 'enabled': hasSelected === true}">提交开拓申请</div>
+            <div class="confirm-dev-market-btn enabled">提交开拓申请</div>
           </div>
           <ul class="market-select-list">
             <li class="select-market-item" @mouseover="selectItemOnmouseon($event, 0)" :class="{'on-checked': m1 === true}">

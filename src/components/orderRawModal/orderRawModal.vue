@@ -40,7 +40,7 @@
           </tr>
           </tbody>
         </table>
-        <div class="confirm-order-btn" :class="{'disable': !totalvalid, 'enable': totalvalid}">提交订单</div>
+        <div class="confirm-order-btn enable">提交订单</div>
       </div>
     </div>
   </transition>
@@ -145,15 +145,7 @@
         this.r4 = parseInt(result);
       }
     },
-    computed: {
-      totalvalid() {
-        let total = 0;
-        for(let i = 1; i < 5; i++) {
-          total += parseInt(this['r' + 1]);
-        }
-        return total > 0;
-      }
-    }
+    computed: {}
   };
 </script>
 
