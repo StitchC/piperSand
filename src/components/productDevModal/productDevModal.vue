@@ -48,8 +48,9 @@
    * 产品研发模态框组件
    *
    * @params {Boolean} show - 控制组件隐藏或显示
+   * @params {Integer} index - 保存对应按钮的index
    *
-   *
+   * @event on-confirm - 点击确认按钮的时候 触发父组件事件 将对应按钮设为disabled
    * @event product-dev-modal-close - 触发父组件事件关闭子组件
    * */
   export default {
@@ -64,6 +65,9 @@
     props: {
       show: {
         type: Boolean
+      },
+      index: {
+        type: Number
       }
     },
     methods: {
@@ -77,16 +81,19 @@
         // 确认研发按钮点击时 先判断按钮是否可以被点击
         // 然后再遍历一次 data 里面的 p1 - p4 数据
         // 如果值为true 的就推进数组再发送ajax 给后台
+        /*
         if(this.hasSelected === false) {
           return;
         }
+        */
         let resultArr = [];
         for(let i = 1; i < 5; i++) {
           if(this['p' + i] === true) {
             resultArr.push('p' + i);
           }
         }
-        console.log(resultArr);
+        this.$emit('on-confirm', this.index);
+        this.$emit('product-dev-modal-close');
       },
       closeModal() {
         this.init();

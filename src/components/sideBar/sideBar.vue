@@ -99,6 +99,8 @@
           border-bottom: 1px solid #292929
           color: #fff
           cursor: pointer
+          &:last-child
+            border-bottom: 0
           .icon
             flex: 1
             color: #fff

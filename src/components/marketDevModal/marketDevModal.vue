@@ -36,7 +36,7 @@
                 <p class="intro-txt">你将会在国际开拓更大的市场</p>
               </div>
             </transition-group>
-            <div class="confirm-dev-market-btn enabled">提交开拓申请</div>
+            <div class="confirm-dev-market-btn enabled" @click="confirm">提交开拓申请</div>
           </div>
           <ul class="market-select-list">
             <li class="select-market-item" @mouseover="selectItemOnmouseon($event, 0)" :class="{'on-checked': m1 === true}">
@@ -77,7 +77,10 @@
    * 开拓新市场模态框组件
    *
    * @params {Boolean} show - 控制组件的显示或隐藏
+   * @params {Integer} index - 保存对应模态框的按钮
    *
+   *
+   * @event on-confirm - 触发父组件事件 将对应按钮设置为 disabled
    * @event market-dev-modal-close - 触发父组件关闭模态框
    * */
 
@@ -95,6 +98,9 @@
     props: {
       show: {
         type: Boolean
+      },
+      index: {
+        type: Number
       }
     },
     methods: {
@@ -108,6 +114,10 @@
       },
       closeDialog() {
         this.init();
+        this.$emit('market-dev-modal-close');
+      },
+      confirm() {
+        this.$emit('on-confirm', this.index);
         this.$emit('market-dev-modal-close');
       }
     },

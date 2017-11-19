@@ -65,7 +65,7 @@
               </tbody>
             </table>
           </div>
-          <div class="confirm-emergency-buy-btn enable">{{confirmBtnTxt}}</div>
+          <div class="confirm-emergency-buy-btn enable" @click="confirm">{{confirmBtnTxt}}</div>
         </div>
       </div>
     </div>
@@ -79,7 +79,9 @@
    *
    * @params {boolean} show - 控制组件显示或隐藏
    * @params {String} type - 控制组件的类型 'buy' 表示紧急购入对话框 'sell' 表示出售库存对话框
+   * @params {Integer} index - 保存模态框对应按钮的index
    *
+   * @event on-confirm - 点击确认按钮 触发父组件事件 把对应的按钮设为 disabled
    * @event emergency-buy-modal-close - 触发父组件关闭模态框
    * */
 
@@ -104,6 +106,9 @@
       },
       type: {
         type: String
+      },
+      index: {
+        type: Number
       }
     },
     methods: {
@@ -116,10 +121,15 @@
       closeModal() {
         this.init();
         this.$emit('buy-or-sell-modal-close');
+      },
+      confirm() {
+        this.$emit('on-confirm', this.index);
+        this.$emit('buy-or-sell-modal-close');
       }
     },
     watch: {
       type(val) {
+        console.log(val);
         if(val === 'buy') {
           this.title = '紧急购买';
           this.confirmBtnTxt = '确认购买';

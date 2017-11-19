@@ -40,7 +40,7 @@
           </tr>
           </tbody>
         </table>
-        <div class="confirm-order-btn enable">提交订单</div>
+        <div class="confirm-order-btn enable" @click="confirm">提交订单</div>
       </div>
     </div>
   </transition>
@@ -51,7 +51,9 @@
    *  下原材料订单模态框
    *
    * @params {Boolean} show - 控制模态框的隐藏或显示
+   * @params {Integer} index - 保存模态框对应的按钮index
    *
+   * @event on-confirm - 点击确认按钮触发父组件事件 将对应的按钮设为 disabled
    * @event order-raw-modal-close - 关闭模态框时触发父组件事件
    * */
   export default {
@@ -66,6 +68,9 @@
     props: {
       show: {
         type: Boolean
+      },
+      index: {
+        type: Number
       }
     },
     methods: {
@@ -76,6 +81,10 @@
       },
       closeModal() {
         this.initOrder();
+        this.$emit('order-raw-modal-close');
+      },
+      confirm() {
+        this.$emit('on-confirm', this.index);
         this.$emit('order-raw-modal-close');
       }
     },

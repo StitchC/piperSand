@@ -22,7 +22,7 @@
             <span class="plus-btn icon-plus" @click="plusYear"></span>
           </div>
         </div>
-        <div class="confirm-loan-btn">确认借款</div>
+        <div class="confirm-loan-btn" @click="confirm">确认借款</div>
       </div>
     </div>
   </transition>
@@ -34,7 +34,9 @@
    *
    *  @params {Boolean} show - 控制组件显示或隐藏
    *  @params {Integer} type - 控制组件是长期贷款还是短期贷款，0：短期贷款  1：长期贷款 根据贷款类型不同发送不同的请求url 及部分组件内容
+   *  @params {Integer} index - 保存模态框对应按钮的index
    *
+   *  @event on-confirm - 点击确认按钮的时候触发父组件事件，把对应的按钮设为 disabled
    *  @event loan-modal-close - 点击模态框关闭按钮后触发事件通知父组件
    * */
   export default {
@@ -51,6 +53,9 @@
       },
       show: {
         type: Boolean
+      },
+      index: {
+        type: Number
       }
     },
     methods: {
@@ -84,6 +89,10 @@
       closeLoanModal() {
         // 关闭模态框的时候初始化对话框里面的内容 再触发事件
         this.initDialog();
+        this.$emit('loan-modal-close');
+      },
+      confirm() {
+        this.$emit('on-confirm', this.index);
         this.$emit('loan-modal-close');
       }
     },

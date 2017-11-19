@@ -19,7 +19,7 @@
               </div>
               <div class="select-type-item" :class="{'selected': type === 'lend'}">
                 <div class="buy-type-icon">租</div>
-                <input type="radio" name="buy-type" value="lend" v-model="type">
+                <input type="radio" name="buy-type" value="rent" v-model="type">
               </div>
             </div>
           </div>
@@ -30,12 +30,12 @@
               <div class="size-select-item" :class="{'selected': size === 'large'}">
                 <span class="size-type-icon large-size icon-factory"></span>
                 <p class="size-txt">大型厂房</p>
-                <input type="radio" name="buy-size" value="large" v-model="size">
+                <input type="radio" name="buy-size" value="big" v-model="size">
               </div>
               <div class="size-select-item" :class="{'selected': size === 'middle'}">
                 <span class="size-type-icon middle-size icon-factory"></span>
                 <p class="size-txt">中型厂房</p>
-                <input type="radio" name="buy-size" value="middle" v-model="size">
+                <input type="radio" name="buy-size" value="medium" v-model="size">
               </div>
               <div class="size-select-item" :class="{'selected': size === 'small'}">
                 <span class="size-type-icon small-size icon-factory"></span>
