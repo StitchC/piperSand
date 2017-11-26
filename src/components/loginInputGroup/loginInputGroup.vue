@@ -17,6 +17,7 @@
 
 <script type="text/ecmascript-6">
   import forgotPwdDialog from 'components/forgotPwdDialog/forgotPwdDialog.vue';
+  import {getCookie} from 'common/js/cookie.js';
 
 
   const ACCOUNT_REG = /^[\w\d]+@[\w\d]+\.[\w]+$/;
@@ -46,6 +47,18 @@
           this.loginAcStatus.txt = '邮箱地址错误';
           this.loginAccount = '';
         }
+
+        this.$http.post('/login', {
+          username: this.loginAccount,
+          password: this.loginPwd
+        }, {
+          emulateJSON: true,
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+          }
+        }).then((res) => {
+          console.log(res);
+        });
       },
       forgotPwd() {
         this.forgotPwdDialogShow = true;

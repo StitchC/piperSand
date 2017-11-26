@@ -17,7 +17,7 @@
                 <div class="buy-type-icon">买</div>
                 <input type="radio" name="buy-type" value="buy" v-model="type">
               </div>
-              <div class="select-type-item" :class="{'selected': type === 'lend'}">
+              <div class="select-type-item" :class="{'selected': type === 'rent'}">
                 <div class="buy-type-icon">租</div>
                 <input type="radio" name="buy-type" value="rent" v-model="type">
               </div>
@@ -30,12 +30,12 @@
               <div class="size-select-item" :class="{'selected': size === 'large'}">
                 <span class="size-type-icon large-size icon-factory"></span>
                 <p class="size-txt">大型厂房</p>
-                <input type="radio" name="buy-size" value="big" v-model="size">
+                <input type="radio" name="buy-size" value="large" v-model="size">
               </div>
               <div class="size-select-item" :class="{'selected': size === 'middle'}">
                 <span class="size-type-icon middle-size icon-factory"></span>
                 <p class="size-txt">中型厂房</p>
-                <input type="radio" name="buy-size" value="medium" v-model="size">
+                <input type="radio" name="buy-size" value="middle" v-model="size">
               </div>
               <div class="size-select-item" :class="{'selected': size === 'small'}">
                 <span class="size-type-icon small-size icon-factory"></span>
@@ -47,15 +47,15 @@
             <transition-group name="factory-size-hint-slide" tag="div" model="out-in">
               <div class="hint-txt" key="1" v-show="size === 'large'">
                 <h3>大型厂房</h3>
-                <p>大型厂房拥有5条生产线 生产效率极高</p>
+                <p>大型厂房能容纳5条生产线 生产效率极高</p>
               </div>
               <div class="hint-txt" key="2" v-show="size === 'middle'">
                 <h3>中型厂房</h3>
-                <p>中型厂房拥有4条生产线 生产效率不俗大型厂房 性价比较高</p>
+                <p>中型厂房能容纳4条生产线 生产效率不俗大型厂房 性价比较高</p>
               </div>
               <div class="hint-txt" key="3" v-show="size === 'small'">
                 <h3>小型厂房</h3>
-                <p>小型厂房拥有3条生产线 生产效率较低</p>
+                <p>小型厂房只能容纳3条生产线 生产效率较低</p>
               </div>
             </transition-group>
           </div>

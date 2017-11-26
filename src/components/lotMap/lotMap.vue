@@ -8,17 +8,30 @@
           <li class="intro-item middle-factory"><i class="icon icon-factory"></i>中型工厂</li>
           <li class="intro-item large-factory"><i class="icon icon-factory"></i>大型工厂</li>
         </ul>
-        <div class="lot-item" :data-id="item" v-for="(item, index) in lots" v-tooltip="{content: '点击地块购置工厂', classes: 'tooltip-style'}" @click="showBuyFactory($event, index + 1)">
-          <span class="lot-title">地块{{item}}</span>
+        <div class="lot-item" :data-id="lot.index" v-for="(lot, lotIndex) in lots" v-tooltip="{content: '点击地块购置工厂', classes: 'tooltip-style'}" @click="showBuyFactory($event, lot.index)">
+          <span class="lot-title">地块{{lot.index}}</span>
+          <div class="factory-model-wrapper">
+            <div class="factory-item icon-factory"
+                 v-for="(factory, factoryIndex) in lot.factories"
+                 :class="{'large': factory.size === 3,
+                 'middle': factory.size === 2,
+                 'small': factory.size === 1}"
+                 @click.stop="enterFactory($event, {
+                    lotId: lot.index,
+                    factoryDetail: factory
+                 })"></div>
+          </div>
         </div>
       </div>
       <buy-factory-modal :show="buyFactoryShow" :lot-index="curLotIndex" @buy-factory-modal-close="closeBuyFactoryModal"></buy-factory-modal>
+      <factory-modal :show="factoryModalShow" :detail="factoryDetail" @factory-detail-close="closeFactoryDetail"></factory-modal>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import buyFactoryModal from 'components/buyFactoryModal/buyFactoryModal.vue';
+  import factoryModal from 'components/factoryModal/factoryModal.vue';
 
   /**
    * 工厂选项模态框
@@ -34,8 +47,317 @@
   export default {
     data() {
       return {
-        lots: [1, 2, 3, 4, 5],
+        lots: [
+          {
+            index: 1,
+            factories: [
+              {
+                size: 3,
+                lines: [
+                  {
+                    producting: true,
+                    constructing: false,
+                    newcreate: false,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 15000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: true,
+                    newcreate: false,
+                    value: 9000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 5
+              },
+              {
+                size: 2,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 4
+              },
+              {
+                size: 1,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: true,
+                    newcreate: false,
+                    value: 8000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 3
+              }
+            ]
+          },
+          {
+            index: 2,
+            factories: [
+              {
+                size: 2,
+                lines: [
+                  {
+                    producting: true,
+                    constructing: false,
+                    newcreate: false,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 4
+              },
+              {
+                size: 2,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 4
+              },
+              {
+                size: 1,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 3
+              }
+            ]
+          },
+          {
+            index: 3,
+            factories: [
+              {
+                size: 2,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 4
+              },
+              {
+                size: 3,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 5
+              }
+            ]
+          },
+          {
+            index: 4,
+            factories: [
+              {
+                size: 1,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 3
+              },
+              {
+                size: 3,
+                lines: [
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  },
+                  {
+                    producting: false,
+                    constructing: false,
+                    newcreate: true,
+                    value: 10000,
+                    transState: 1,
+                    producingState: 1
+                  }
+                ],
+                limit: 5
+              }
+            ]
+          },
+          {
+            index: 5,
+            factories: [
+              {
+                size: 3,
+                lines: [],
+                limit: 5
+              }
+            ]
+          }
+        ],
         buyFactoryShow: false,
+        factoryModalShow: false,
+        factoryDetail: {},
         curLotIndex: -1
       };
     },
@@ -45,7 +367,8 @@
       }
     },
     components: {
-      'buy-factory-modal': buyFactoryModal
+      'buy-factory-modal': buyFactoryModal,
+      'factory-modal': factoryModal
     },
     methods: {
       close() {
@@ -57,6 +380,15 @@
       },
       closeBuyFactoryModal() {
         this.buyFactoryShow = false;
+      },
+      enterFactory(event, obj) {
+        this.factoryDetail = obj;
+        this.factoryModalShow = true;
+        console.log(obj);
+      },
+      closeFactoryDetail() {
+        this.factoryModalShow = false;
+        console.log('fk');
       }
     }
   };
@@ -127,6 +459,30 @@
           margin-top: -19px
           font-size: 20px
           text-align: center
+
+        .factory-model-wrapper
+          width: 90%
+          margin: 10px auto 0 auto
+          text-align: center
+          .factory-item
+            position: relative
+            display: inline-block
+            width: 40px
+            height: 40px
+            line-height: 40px
+            margin-left: 10px
+            background-color: #fff
+            border-radius: 5px
+            text-align: center
+
+            &:first-child
+              margin: 0
+            &.large
+              color: #d21a22
+            &.middle
+              color: #0080a9
+            &.small
+              color: #2dae55
   .tooltip-style
     padding: 5px
     font-size: 14px
