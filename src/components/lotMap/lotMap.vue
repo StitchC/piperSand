@@ -55,7 +55,7 @@
                 size: 3,
                 lines: [
                   {
-                    producting: true,
+                    producting: false,
                     constructing: false,
                     newcreate: false,
                     value: 10000,
@@ -388,7 +388,6 @@
       },
       closeFactoryDetail() {
         this.factoryModalShow = false;
-        console.log('fk');
       }
     }
   };

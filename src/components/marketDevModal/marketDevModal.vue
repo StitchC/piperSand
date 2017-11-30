@@ -137,6 +137,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .market-dev-wrapper
     modal-style()
@@ -157,8 +158,9 @@
       .market-dev-dialog-title
         line-height: 25px
         text-align: center
+        font-size: $title-font-size
       .market-dev-dialog-intro
-        font-size: 14px
+        font-size: $normal-font-size
         text-align: center
       .market-dev-main-wrap
         width: 95%
@@ -193,7 +195,7 @@
               .logo,
               .intro-title,
               .intro-txt
-                color: #2eae57
+                color: $enable-or-active
             .logo
               margin-top: 30px
               font-size: 180px
@@ -204,7 +206,7 @@
               text-align: center
             .intro-txt
               margin-top: 15px
-              font-size: 14px
+              font-size: $normal-font-size
               text-align: center
         .market-select-list
           display: inline-block
@@ -220,7 +222,7 @@
             cursor: pointer
             transition: all .3s linear
             &.on-checked
-              background-color: #2ecc71
+              background-color: $enable-or-active
             &:hover
               box-shadow: 0 8px 10px rgba(0,0,0,0.3)
             &:first-child
@@ -249,12 +251,12 @@
           margin-top: 50%
           margin-left: 195px
           text-align: center
-          font-size: 14px
+          font-size: $normal-font-size
           cursor: pointer
           &.disabled
-            background-color: #393939
-            color: #ccc
+            background-color: $btn-disabled-bg
+            color: $btn-disabled-font-color
           &.enabled
-            background-color: #2ecc71
-            color: #fff
+            background-color: $enable-or-active
+            color: $btn-enable-font-color
 </style>

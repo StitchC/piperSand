@@ -64,6 +64,8 @@
 </script>
 
 <style lang="stylus">
+  @import "../../common/css/variable.styl"
+
   .side-bar
     position: fixed
     top: 55px
@@ -74,12 +76,12 @@
     .title
       padding: 10px 0
       text-align: center
-      color #2ecc71
+      color $theme-color
     .total-cash
       height: 60px
       line-height: 60px
       text-align: center
-      color #2ecc71
+      color $theme-color
       font-size: 40px
     .tool-list-wrapper
       position: absolute
@@ -112,6 +114,6 @@
             flex: 1
             color: #fff
           &:hover
-            background-color: #2ecc71
-            border-bottom-color: #2ecc71
+            background-color: $theme-color
+            border-bottom-color: $theme-color
 </style>

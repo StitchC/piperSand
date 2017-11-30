@@ -126,6 +126,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .loan-modal-wrapper
     modal-style()
@@ -146,7 +147,7 @@
       .loan-dialog-title
         line-height: 38px
         text-align: center
-        font-size: 15px
+        font-size: $title-font-size
       .operate-wrap
         height: 40px
         line-height: 40px
@@ -156,13 +157,13 @@
           display: inline-block
           width: 80px
           line-height: 40px
-          font-size: 14px
+          font-size: $normal-font-size
           text-align: center
         .operate-main
           display: inline-block
           line-height: 40px
           padding-left: 20px
-          font-size: 14px
+          font-size: $normal-font-size
           span
             display: inline-block
             vertical-align: middle

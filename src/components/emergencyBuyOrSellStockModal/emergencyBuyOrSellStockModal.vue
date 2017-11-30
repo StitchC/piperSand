@@ -273,6 +273,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .emergency-buy-wrapper
     modal-style()
@@ -292,6 +293,7 @@
           close-btn-style()
       .emergency-buy-title
         line-height: 30px
+        font-size: $title-font-size
         text-align: center
       .emrgency-but-list-wrapper
         margin-top: 25px
@@ -301,7 +303,7 @@
           width: 90%
           margin: 15px auto 0 auto
           border: 1px solid #999
-          font-size: 14px
+          font-size: $normal-font-size
           thead
             tr
               line-height: 35px
@@ -329,26 +331,26 @@
           width: 40%
           margin-right: 20px
           .buy-raw-title
-            font-size: 14px
+            font-size: $normal-font-size
             text-align: center
         .buy-product
           display: inline-block
           width: 40%
           .buy-product-title
-            font-size: 14px
+            font-size: $normal-font-size
             text-align: center
         .confirm-emergency-buy-btn
           width: 250px
           height: 35px
           line-height: 35px
           margin: 20px auto 0 auto
-          font-size: 14px
+          font-size: $normal-font-size
           cursor: pointer
           &.disable
-            background-color: #393939
-            color: #ccc
+            background-color: $btn-disabled-bg
+            color: $btn-disabled-font-color
           &.enable
-            background-color: #2ecc71
-            color: #fff
+            background-color: $enable-or-active
+            color: $btn-enable-font-color
 
 </style>

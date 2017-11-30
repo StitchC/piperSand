@@ -160,6 +160,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .order-raw-wrapper
     modal-style()
@@ -181,6 +182,7 @@
       .order-raw-dialog-title
         margin-top: 20px
         text-align: center
+        font-size: $title-font-size
       .raw-liset
         width: 90%
         margin: 20px auto 0 auto
@@ -192,7 +194,7 @@
           td
             border-right: 1px solid #999
             text-align: center
-            font-size: 14px
+            font-size: $normal-font-size
             &:last-child
               border-right: 0
             input
@@ -206,7 +208,7 @@
           th
             border-right: 1px solid #999
             text-align: center
-            font-size: 14px
+            font-size: $normal-font-size
             &:last-child
               border-right: 0
       .confirm-order-btn

@@ -29,6 +29,8 @@
 </script>
 
 <style lang="stylus">
+  @import "../../common/css/variable.styl"
+
   .header
     position: fixed
     top: 0
@@ -46,9 +48,9 @@
         height: 55px
         line-height: 55px
         padding: 0 12px
-        font-size: 14px
+        font-size: $normal-font-size
         &:hover
-          background-color: #2ecc71
+          background-color: $theme-color
         a
           color: #fff
     .user
@@ -85,10 +87,10 @@
           line-height: 40px
           text-align: center
           color: #fff
-          font-size: 14px
+          font-size: $normal-font-size
           cursor: pointer
           &:hover
-            background-color: #2ecc71
+            background-color: $theme-color
           a
             color: #fff
 </style>

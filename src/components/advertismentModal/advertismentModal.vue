@@ -539,6 +539,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .adv-invest-modal-wrapper
     modal-style()
@@ -560,10 +561,11 @@
       .adv-invest-title
         line-height: 30px
         text-align: center
+        font-size: $title-font-size
       .adv-invest-hint
         line-height: 30px
         text-align: center
-        font-size: 14px
+        font-size: $normal-font-size
       .adv-invest-list
         display: block
         width: 90%
@@ -575,7 +577,7 @@
             border-bottom: 1px solid #ccc
             th
               text-align: center
-              font-size: 14px
+              font-size: $normal-font-size
               border-left: 1px solid #ccc
               &:first-child
                 width: 85px
@@ -592,7 +594,7 @@
             td
               border-left: 1px solid #ccc
               text-align: center
-              font-size: 14px
+              font-size: $normal-font-size
               &:first-child
                 width: 85px
                 border-left: 0
@@ -611,9 +613,9 @@
         height: 38px
         line-height: 38px
         margin: 20px auto 0 auto
-        background-color: #2ecc71
-        color: #fff
+        background-color: $enable-or-active
+        color: $btn-enable-font-color
         text-align: center
-        font-size: 14px
+        font-size: $normal-font-size
         cursor: pointer
 </style>

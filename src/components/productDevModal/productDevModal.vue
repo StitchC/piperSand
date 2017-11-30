@@ -116,6 +116,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/css/mixin.styl"
+  @import "../../common/css/variable.styl"
 
   .product-dev-wrapper
     modal-style()
@@ -149,15 +150,15 @@
           width: 80px
           height: 80px
           margin-left: 10px
-          background-color: #959595
+          background-color: $disable-or-deactive
           border-radius: 5px
           text-align: center
           transition: all .3s linear
           &.on-checked
-            background-color: #2ecc71
+            background-color: $enable-or-active
             .dev-type-item-icon,
             .item-title
-              color: #fff
+              color: $btn-enable-font-color
           &:first-child
             margin-left: 0
           .item-inner
